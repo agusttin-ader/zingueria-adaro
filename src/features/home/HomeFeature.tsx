@@ -15,11 +15,18 @@ export default function HomeFeature() {
         <RevealOnScroll>
           <section className="home-cta" aria-labelledby="home-cta-heading">
             <div className="home-cta__content">
-              <h2 id="home-cta-heading">Hablemos de tu proyecto</h2>
-              <p>Escribinos con calma y vemos juntos qué necesitás en zinguería.</p>
+              <h2 id="home-cta-heading">Escribinos por WhatsApp</h2>
+              <p>
+                Contanos brevemente de tu proyecto y te respondemos con una orientación clara sobre el trabajo de
+                zinguería que necesitás.
+              </p>
             </div>
             <div className="home-cta__actions">
-              <Button href="#contacto">Solicitar presupuesto</Button>
+              <Button
+                href="https://wa.me/5491169172539?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20un%20presupuesto%20de%20zinguer%C3%ADa.%0AEs%20para%20una%20vivienda/comercio%20en%20la%20zona%20de%20%0AQuedo%20atento/a,%20gracias."
+              >
+                Solicitar presupuesto por WhatsApp
+              </Button>
             </div>
           </section>
         </RevealOnScroll>

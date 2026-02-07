@@ -258,6 +258,9 @@ p + p {
 
 .hero {
   padding: 4rem 0 3.25rem;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
 }
 
@@ -297,6 +300,19 @@ p + p {
 
 .hero__actions {
   margin-top: 1.5rem;
+}
+
+.hero__secondary-contact {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+}
+
+.hero__secondary-contact a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
 }
 
 .hero__actions .btn--primary {
@@ -636,6 +652,79 @@ p + p {
 
 @media (max-width: 900px) {
   .empresa-extra__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.contact {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 3.5rem 0 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+}
+
+.contact__header {
+  max-width: 40rem;
+}
+
+.contact__title {
+  font-size: clamp(1.9rem, 3vw, 2.3rem);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.8rem;
+}
+
+.contact__lead {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 3rem;
+}
+
+.contact__card {
+  padding: 1.5rem 1.75rem;
+  border-radius: 0.3rem;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 6%, transparent);
+  background: color-mix(in srgb, var(--color-bg-cream) 92%, #ffffff 8%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact__card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
+.contact__card-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-ink-subtle);
+}
+
+.contact__meta {
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
+}
+
+.contact__note {
+  max-width: 40rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-ink-subtle);
+}
+
+@media (max-width: 900px) {
+  .contact__grid {
     grid-template-columns: minmax(0, 1fr);
   }
 }

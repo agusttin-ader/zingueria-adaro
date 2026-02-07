@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
   { href: '/empresa', label: 'Empresa' },
-  // Agregar más secciones aquí cuando las implementes
+  { href: '/contacto', label: 'Contacto' },
 ];
 
 export default function Navbar() {
