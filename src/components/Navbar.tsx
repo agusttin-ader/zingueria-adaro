@@ -34,6 +34,7 @@ export default function Navbar() {
                   width={160}
                   height={40}
                   priority
+                  unoptimized
                   className="nav__logo nav__logo--light"
                 />
                 <Image
@@ -42,6 +43,7 @@ export default function Navbar() {
                   width={160}
                   height={40}
                   priority
+                  unoptimized
                   className="nav__logo nav__logo--dark"
                 />
               </>
@@ -52,9 +54,13 @@ export default function Navbar() {
                 width={160}
                 height={40}
                 priority
+                unoptimized
                 className="nav__logo nav__logo--light"
               />
             )}
+            <span className="nav__logo-text" aria-hidden="true">
+              ADARO
+            </span>
           </Link>
         </div>
         <ul className="nav__links" aria-label="Secciones principales del sitio">
