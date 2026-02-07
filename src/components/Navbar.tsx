@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import { useTheme } from '@/components/ThemeProvider';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
@@ -11,12 +13,30 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { resolvedTheme, setThemePreference } = useTheme();
 
   return (
     <header className="site-header">
       <nav className="nav">
         <div className="nav__brand">
-          <Link href="/">Zinguería Adaro</Link>
+          <Link href="/" aria-label="Ir al inicio de Zinguería Adaro">
+            <Image
+              src="/images/logo-black.png"
+              alt="Zinguería Adaro"
+              width={160}
+              height={40}
+              priority
+              className="nav__logo nav__logo--light"
+            />
+            <Image
+              src="/images/logo-white.png"
+              alt="Zinguería Adaro"
+              width={160}
+              height={40}
+              priority
+              className="nav__logo nav__logo--dark"
+            />
+          </Link>
         </div>
         <ul className="nav__links" aria-label="Secciones principales del sitio">
           {NAV_ITEMS.map((item) => {
@@ -33,6 +53,26 @@ export default function Navbar() {
               </li>
             );
           })}
+          <li className="nav__item nav__item--theme">
+            <button
+              type="button"
+              className="theme-switch"
+              onClick={() => setThemePreference(resolvedTheme === 'dark' ? 'light' : 'dark')}
+              role="switch"
+              aria-checked={resolvedTheme === 'dark'}
+              aria-label="Cambiar entre tema claro y oscuro"
+            >
+              <span className="theme-switch__icon theme-switch__icon--sun" aria-hidden="true">
+                ☀
+              </span>
+              <span className="theme-switch__track">
+                <span className="theme-switch__thumb" />
+              </span>
+              <span className="theme-switch__icon theme-switch__icon--moon" aria-hidden="true">
+                ☾
+              </span>
+            </button>
+          </li>
         </ul>
       </nav>
     </header>

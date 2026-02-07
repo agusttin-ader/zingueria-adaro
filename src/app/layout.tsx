@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import ScrollRestoration from '@/components/ScrollRestoration';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import { FaWhatsapp } from 'react-icons/fa';
 
 export const metadata: Metadata = {
@@ -22,11 +23,29 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        <meta name="color-scheme" content="light dark" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+  try {
+    const stored = window.localStorage.getItem('theme-preference');
+    if (stored === 'light' || stored === 'dark') {
+      document.documentElement.setAttribute('data-theme', stored);
+    }
+  } catch (_) {
+    // Ignorar errores de acceso a localStorage (por ejemplo, modo privado)
+  }
+})();`,
+          }}
+        />
+      </head>
       <body>
-        <ScrollRestoration />
-        <Navbar />
-        <main className="site-main">{children}</main>
-        <footer className="site-footer">
+        <ThemeProvider>
+          <ScrollRestoration />
+          <Navbar />
+          <main className="site-main">{children}</main>
+          <footer className="site-footer">
           <div className="site-footer__inner">
             <div className="site-footer__identity">
               <span className="site-footer__name">Zinguería Adaro</span>
@@ -79,6 +98,7 @@ export default function RootLayout({
             </a>
           </div>
         </footer>
+        </ThemeProvider>
       </body>
     </html>
   );
