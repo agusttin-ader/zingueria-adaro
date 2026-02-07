@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { useTheme } from '@/components/ThemeProvider';
+import { useEffect, useState } from 'react';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
@@ -14,28 +15,46 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const pathname = usePathname();
   const { resolvedTheme, setThemePreference } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <header className="site-header">
       <nav className="nav">
         <div className="nav__brand">
           <Link href="/" aria-label="Ir al inicio de Zinguería Adaro">
-            <Image
-              src="/images/logo-black.png"
-              alt="Zinguería Adaro"
-              width={160}
-              height={40}
-              priority
-              className="nav__logo nav__logo--light"
-            />
-            <Image
-              src="/images/logo-white.png"
-              alt="Zinguería Adaro"
-              width={160}
-              height={40}
-              priority
-              className="nav__logo nav__logo--dark"
-            />
+            {isMounted ? (
+              <>
+                <Image
+                  src="/images/logo-black.png"
+                  alt="Zinguería Adaro"
+                  width={160}
+                  height={40}
+                  priority
+                  className="nav__logo nav__logo--light"
+                />
+                <Image
+                  src="/images/logo-white.png"
+                  alt="Zinguería Adaro"
+                  width={160}
+                  height={40}
+                  priority
+                  className="nav__logo nav__logo--dark"
+                />
+              </>
+            ) : (
+              <Image
+                src="/images/logo-black.png"
+                alt="Zinguería Adaro"
+                width={160}
+                height={40}
+                priority
+                className="nav__logo nav__logo--light"
+              />
+            )}
           </Link>
         </div>
         <ul className="nav__links" aria-label="Secciones principales del sitio">
