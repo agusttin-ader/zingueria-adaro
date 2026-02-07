@@ -10,12 +10,23 @@ yarn-error.log*
 out
 .next-turbo
 
+# Next.js / deployment
+.vercel
+.turbo
+
 # Env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+# TypeScript
+*.tsbuildinfo
+
 # Misc
 .DS_Store
 *.log
+
+# Coverage / build artifacts
+coverage
+dist
