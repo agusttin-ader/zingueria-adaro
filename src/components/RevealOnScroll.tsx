@@ -14,30 +14,21 @@ export default function RevealOnScroll({ children, className }: RevealOnScrollPr
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
-
-    if (prefersReducedMotion) {
-      setIsVisible(true);
-      return;
-    }
-
     const node = ref.current;
     if (!node) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
+      (entries) => {
+        const entry = entries[0];
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect();
+          observer.unobserve(entry.target);
         }
       },
       {
-        // Low threshold + negative bottom margin so the section
-        // reveals shortly after it starts entering the viewport.
+        root: null,
         threshold: 0.15,
-        rootMargin: '0px 0px -80px 0px',
+        rootMargin: '0px 0px -120px 0px',
       }
     );
 

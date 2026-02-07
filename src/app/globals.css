@@ -43,7 +43,7 @@ body {
 
 .reveal-section {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(24px);
   transition: opacity 0.45s ease-out, transform 0.45s ease-out;
   will-change: opacity, transform;
 }
@@ -53,17 +53,9 @@ body {
   transform: translateY(0);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal-section {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
 @media (max-width: 640px) {
   .reveal-section {
-    transform: translateY(20px);
+    transform: translateY(24px);
     transition-duration: 0.35s;
   }
 }
