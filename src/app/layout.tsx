@@ -24,7 +24,15 @@ export default function RootLayout({
         <Navbar />
         <main className="site-main">{children}</main>
         <footer className="site-footer">
-          <small>© {new Date().getFullYear()} Zinguería Adaro. Todos los derechos reservados.</small>
+          <div className="site-footer__inner">
+            <div className="site-footer__identity">
+              <span className="site-footer__name">Zinguería Adaro</span>
+              <span className="site-footer__tagline">Zinguería Adaro | Zinguería en Buenos Aires</span>
+            </div>
+            <div className="site-footer__legal">
+              <small>© {new Date().getFullYear()} Zinguería Adaro. Todos los derechos reservados.</small>
+            </div>
+          </div>
         </footer>
       </body>
     </html>

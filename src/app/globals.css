@@ -35,19 +35,32 @@ body {
 }
 
 body {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
-h1,
-h2,
-h3,
+h1 {
+  font-size: clamp(2.1rem, 3.4vw, 2.7rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
 h4 {
+  font-size: 1rem;
   font-weight: 600;
 }
 
 p + p {
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
 }
 
 .site-main {
@@ -67,7 +80,7 @@ p + p {
 .nav {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 0.85rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -75,10 +88,10 @@ p + p {
 }
 
 .nav__brand a {
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   text-transform: none;
-  font-size: 1rem;
+  font-size: 1.02rem;
   color: var(--color-ink);
   text-decoration: none;
   display: inline-flex;
@@ -109,8 +122,8 @@ p + p {
   text-decoration: none;
   position: relative;
   text-transform: none;
-  letter-spacing: 0.02em;
-  font-weight: 500;
+  letter-spacing: 0.03em;
+  font-weight: 600;
 }
 
 .site-footer {
@@ -120,6 +133,40 @@ p + p {
   border-top: 1px solid color-mix(in srgb, var(--color-ink) 6%, transparent);
   font-size: 0.8rem;
   color: var(--color-ink-muted);
+}
+
+.site-footer__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.site-footer__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.site-footer__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.site-footer__tagline {
+  font-size: 0.85rem;
+}
+
+.site-footer__legal {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 768px) {
@@ -138,32 +185,46 @@ p + p {
 }
 
 .hero {
-  padding: 5rem 0 4rem;
+  padding: 4rem 0 3.25rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
 }
 
 .hero__content {
-  max-width: 40rem;
+  max-width: 42rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.4rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
 }
 
 .hero__title {
-  font-size: clamp(2.1rem, 3.4vw, 2.7rem);
+  font-size: clamp(2.2rem, 3.6vw, 2.9rem);
   line-height: 1.18;
   letter-spacing: 0.01em;
   color: var(--color-ink);
 }
 
 .hero__subtitle {
-  max-width: 34rem;
+  max-width: 36rem;
   font-size: 0.98rem;
   line-height: 1.7;
-  color: var(--color-ink-soft);
+  color: var(--color-ink-subtle);
 }
 
 .hero__actions {
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.hero__actions .btn--primary {
+  min-width: 10rem;
+  border-color: var(--color-ink);
+  background-color: var(--color-ink);
+  color: var(--color-bg-cream);
+}
+
+.hero__actions .btn--primary:hover {
+  background-color: color-mix(in srgb, var(--color-ink) 92%, var(--color-bg-cream));
 }
 
 .btn {
@@ -172,7 +233,7 @@ p + p {
   justify-content: center;
   padding: 0.7rem 2.2rem;
   border-radius: 0.14rem;
-  border: 1px solid color-mix(in srgb, var(--color-ink) 22%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 35%, transparent);
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -186,24 +247,24 @@ p + p {
 
 .btn--primary {
   border-color: var(--color-ink);
-  background-color: transparent;
-  color: var(--color-ink);
+  background-color: var(--color-ink);
+  color: var(--color-bg-cream);
 }
 
 .btn--primary:hover {
-  background-color: color-mix(in srgb, var(--color-ink) 6%, var(--color-bg-cream));
+  background-color: color-mix(in srgb, var(--color-ink) 92%, var(--color-bg-cream));
 }
 
 .btn--primary:active {
-  background-color: color-mix(in srgb, var(--color-ink) 10%, var(--color-bg-cream));
+  background-color: color-mix(in srgb, var(--color-ink) 88%, var(--color-bg-cream));
 }
 
 .btn--secondary {
-  border-color: var(--color-ink);
+  border-color: color-mix(in srgb, var(--color-ink) 40%, transparent);
 }
 
 .btn--secondary:hover {
-  background-color: color-mix(in srgb, var(--color-ink) 4%, var(--color-bg-cream));
+  background-color: color-mix(in srgb, var(--color-ink) 6%, var(--color-bg-cream));
 }
 
 .btn--secondary:active {
@@ -230,8 +291,8 @@ p + p {
 }
 
 .services__title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: none;
   margin-bottom: 0.5rem;
@@ -250,12 +311,13 @@ p + p {
 }
 
 .services__item {
-  padding: 0.4rem 0 0.4rem;
+  padding: 0.9rem 0 0.9rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 4%, transparent);
 }
 
 .services__item-title {
-  font-size: 0.93rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: none;
   margin-bottom: 0.25rem;
@@ -280,9 +342,13 @@ p + p {
   gap: 1.5rem;
 }
 
+.home-cta__content {
+  max-width: 40rem;
+}
+
 .home-cta__content h2 {
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
   text-transform: none;
   margin-bottom: 0.35rem;
 }
@@ -291,6 +357,10 @@ p + p {
   font-size: 0.98rem;
   line-height: 1.6;
   color: var(--color-ink-soft);
+}
+
+.home-cta__actions .btn--primary {
+  min-width: 10rem;
 }
 
 @media (max-width: 900px) {
@@ -311,6 +381,7 @@ p + p {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
 }
 
 .empresa__header {
