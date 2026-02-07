@@ -8,35 +8,39 @@ export const metadata = {
 
 export default function EmpresaPage() {
   return (
-    <RevealOnScroll>
-      <section className="empresa">
-        <header className="empresa__header">
-          <h1 className="empresa__title">Empresa</h1>
-          <p className="empresa__lead">
-            Más de 60 años de trayectoria combinando trabajo artesanal con tecnología para resolver
-            trabajos de zinguería en viviendas y comercios.
-          </p>
-        </header>
-        <div className="empresa__grid">
-          <section>
-            <h2 className="empresa__subtitle">Oficio y precisión</h2>
-            <p>
-              Cada pieza se corta, pliega e instala a medida, cuidando encuentros, pendientes y terminaciones
-              para que la zinguería funcione bien cuando la obra tiene que responder a la lluvia y al uso
-              diario.
+    <section className="empresa">
+      <RevealOnScroll>
+        <>
+          <header className="empresa__header">
+            <h1 className="empresa__title">Empresa</h1>
+            <p className="empresa__lead">
+              Más de 60 años de trayectoria combinando trabajo artesanal con tecnología para resolver
+              trabajos de zinguería en viviendas y comercios.
             </p>
-          </section>
+          </header>
+          <div className="empresa__grid">
+            <section>
+              <h2 className="empresa__subtitle">Oficio y precisión</h2>
+              <p>
+                Cada pieza se corta, pliega e instala a medida, cuidando encuentros, pendientes y terminaciones
+                para que la zinguería funcione bien cuando la obra tiene que responder a la lluvia y al uso
+                diario.
+              </p>
+            </section>
 
-          <section>
-            <h2 className="empresa__subtitle">Tecnología aplicada al taller</h2>
-            <p>
-              Sumamos máquinas y procesos que mejoran la repetición y el acabado, sin perder el control del
-              oficio. Así podemos resolver trabajos para viviendas y comercios con plazos claros y buena
-              terminación.
-            </p>
-          </section>
-        </div>
+            <section>
+              <h2 className="empresa__subtitle">Tecnología aplicada al taller</h2>
+              <p>
+                Sumamos máquinas y procesos que mejoran la repetición y el acabado, sin perder el control del
+                oficio. Así podemos resolver trabajos para viviendas y comercios con plazos claros y buena
+                terminación.
+              </p>
+            </section>
+          </div>
+        </>
+      </RevealOnScroll>
 
+      <RevealOnScroll>
         <section className="empresa-extra" aria-labelledby="empresa-extra-heading">
           <header className="empresa-extra__header">
             <h2 id="empresa-extra-heading">Líneas de trabajo</h2>
@@ -72,7 +76,9 @@ export default function EmpresaPage() {
             </article>
           </div>
         </section>
+      </RevealOnScroll>
 
+      <RevealOnScroll>
         <section className="empresa-categories" aria-labelledby="empresa-categories-heading">
           <header className="empresa-categories__header">
             <h2 id="empresa-categories-heading">Cómo trabajamos</h2>
@@ -116,7 +122,7 @@ export default function EmpresaPage() {
             </article>
           </div>
         </section>
-      </section>
-    </RevealOnScroll>
+      </RevealOnScroll>
+    </section>
   );
 }

@@ -62,6 +62,120 @@ export default function HomeFeature() {
             </div>
           </section>
         </RevealOnScroll>
+
+        <RevealOnScroll>
+          <section className="home-extra" aria-labelledby="home-extra-casos-heading">
+            <header className="home-extra__header">
+              <h2 id="home-extra-casos-heading">Casos frecuentes</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae risus vitae
+                nibh consectetur interdum.
+              </p>
+            </header>
+            <div className="home-extra__grid">
+              <article className="home-extra__item">
+                <h3 className="home-extra__item-title">Reformas en vivienda existente</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus sit amet
+                  lacus luctus mollis. Curabitur vulputate, urna in fermentum maximus, velit orci
+                  efficitur dui, id dictum sapien dui a lorem.
+                </p>
+              </article>
+              <article className="home-extra__item">
+                <h3 className="home-extra__item-title">Obras nuevas en altura</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti.
+                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                  curae; Nullam porttitor, justo non facilisis efficitur, ligula velit pretium
+                  lectus.
+                </p>
+              </article>
+              <article className="home-extra__item">
+                <h3 className="home-extra__item-title">Locales a la calle</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec purus dictum,
+                  consectetur justo id, ultrices est. Vivamus id gravida lorem, vitae vulputate
+                  dolor. Praesent eget ex ut eros gravida vestibulum.
+                </p>
+              </article>
+            </div>
+          </section>
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <section className="home-extra" aria-labelledby="home-extra-detalles-heading">
+            <header className="home-extra__header">
+              <h2 id="home-extra-detalles-heading">Detalles técnicos</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae risus vitae
+                nibh consectetur interdum.
+              </p>
+            </header>
+            <div className="home-extra__grid">
+              <article className="home-extra__item">
+                <h3 className="home-extra__item-title">Pendientes y desagües</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus sit amet
+                  lacus luctus mollis. Curabitur vulputate, urna in fermentum maximus, velit orci
+                  efficitur dui, id dictum sapien dui a lorem.
+                </p>
+              </article>
+              <article className="home-extra__item">
+                <h3 className="home-extra__item-title">Encuentros con muros y aberturas</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti.
+                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                  curae; Nullam porttitor, justo non facilisis efficitur, ligula velit pretium
+                  lectus.
+                </p>
+              </article>
+              <article className="home-extra__item">
+                <h3 className="home-extra__item-title">Terminaciones y mantenimiento</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec purus dictum,
+                  consectetur justo id, ultrices est. Vivamus id gravida lorem, vitae vulputate
+                  dolor. Praesent eget ex ut eros gravida vestibulum.
+                </p>
+              </article>
+            </div>
+          </section>
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <section className="home-extra" aria-labelledby="home-extra-pruebas-uno-heading">
+            <header className="home-extra__header">
+              <h2 id="home-extra-pruebas-uno-heading">Sección de prueba uno</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae risus vitae
+                nibh consectetur interdum.
+              </p>
+            </header>
+          </section>
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <section className="home-extra" aria-labelledby="home-extra-pruebas-dos-heading">
+            <header className="home-extra__header">
+              <h2 id="home-extra-pruebas-dos-heading">Sección de prueba dos</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae risus vitae
+                nibh consectetur interdum.
+              </p>
+            </header>
+          </section>
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <section className="home-extra" aria-labelledby="home-extra-pruebas-tres-heading">
+            <header className="home-extra__header">
+              <h2 id="home-extra-pruebas-tres-heading">Sección de prueba tres</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae risus vitae
+                nibh consectetur interdum.
+              </p>
+            </header>
+          </section>
+        </RevealOnScroll>
       </section>
     </>
   );

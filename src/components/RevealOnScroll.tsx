@@ -33,7 +33,12 @@ export default function RevealOnScroll({ children, className }: RevealOnScrollPr
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      {
+        // Low threshold + negative bottom margin so the section
+        // reveals shortly after it starts entering the viewport.
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px',
+      }
     );
 
     observer.observe(node);
