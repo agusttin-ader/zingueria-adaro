@@ -168,8 +168,6 @@ p + p {
 
 .nav__logo {
   display: block;
-  height: 34px;
-  width: auto;
 }
 
 .nav__logo--dark {
@@ -193,12 +191,6 @@ p + p {
   :root:not([data-theme]) .nav__logo--dark,
   :root[data-theme='system'] .nav__logo--dark {
     display: block;
-  }
-}
-
-@media (min-width: 768px) {
-  .nav__logo {
-    height: 40px;
   }
 }
 
