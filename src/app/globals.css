@@ -4,9 +4,9 @@
   --color-ink-soft: #4b5563; /* gris para texto secundario */
   --color-ink-muted: #6b7280; /* gris más suave para detalles */
   --color-ink-subtle: #374151; /* gris intermedio para párrafos */
-  --color-ocre: #d97706; /* ocre obra, acentos y bordes */
-  --color-ocre-soft: #fbbf24; /* ocre más claro para degradados */
-  --color-ocre-cream: #fef3c7; /* fondo crema cálido para paneles */
+  --color-ocre: #d97706; /* ocre obra, acento corporativo */
+  --color-ocre-soft: #fbbf24; /* ocre más claro para detalles sutiles */
+  --color-ocre-cream: #fef3c7; /* toque cálido sobre fondo crema */
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -130,7 +130,7 @@ p + p {
   max-width: 1120px;
   margin: 0 auto;
   padding: 2rem 1.5rem 2.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 6%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-ocre) 18%, var(--color-bg-cream));
   font-size: 0.8rem;
   color: var(--color-ink-muted);
 }
@@ -146,6 +146,8 @@ p + p {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 6%, transparent);
 }
 
 .site-footer__name {
@@ -195,7 +197,7 @@ p + p {
   flex-direction: column;
   gap: 1.4rem;
   padding-left: 1.25rem;
-  border-left: 2px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+  border-left: 2px solid color-mix(in srgb, var(--color-ocre) 22%, var(--color-bg-cream));
 }
 
 .hero__title {
@@ -203,6 +205,8 @@ p + p {
   line-height: 1.18;
   letter-spacing: 0.01em;
   color: var(--color-ink);
+  position: relative;
+  padding-bottom: 0.4rem;
 }
 
 .hero__subtitle {
@@ -210,6 +214,15 @@ p + p {
   font-size: 0.98rem;
   line-height: 1.7;
   color: var(--color-ink-subtle);
+}
+
+.hero__title::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin-top: 0.35rem;
+  background: color-mix(in srgb, var(--color-ocre) 65%, var(--color-bg-cream));
 }
 
 .hero__actions {
@@ -252,11 +265,13 @@ p + p {
 }
 
 .btn--primary:hover {
-  background-color: color-mix(in srgb, var(--color-ink) 92%, var(--color-bg-cream));
+  background-color: color-mix(in srgb, var(--color-ink) 90%, var(--color-bg-cream));
+  border-color: color-mix(in srgb, var(--color-ocre) 55%, var(--color-ink));
 }
 
 .btn--primary:active {
-  background-color: color-mix(in srgb, var(--color-ink) 88%, var(--color-bg-cream));
+  background-color: color-mix(in srgb, var(--color-ink) 86%, var(--color-bg-cream));
+  border-color: color-mix(in srgb, var(--color-ocre) 65%, var(--color-ink));
 }
 
 .btn--secondary {
@@ -264,11 +279,13 @@ p + p {
 }
 
 .btn--secondary:hover {
-  background-color: color-mix(in srgb, var(--color-ink) 6%, var(--color-bg-cream));
+  background-color: color-mix(in srgb, var(--color-ocre) 10%, var(--color-bg-cream));
+  border-color: color-mix(in srgb, var(--color-ocre) 45%, var(--color-ink));
 }
 
 .btn--secondary:active {
-  background-color: color-mix(in srgb, var(--color-ink) 10%, var(--color-bg-cream));
+  background-color: color-mix(in srgb, var(--color-ocre) 14%, var(--color-bg-cream));
+  border-color: color-mix(in srgb, var(--color-ocre) 55%, var(--color-ink));
 }
 
 .home-block {
@@ -296,6 +313,16 @@ p + p {
   letter-spacing: 0.03em;
   text-transform: none;
   margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.services__title::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-top: 0.3rem;
+  background: color-mix(in srgb, var(--color-ocre) 60%, var(--color-bg-cream));
 }
 
 .services__lead {
@@ -312,7 +339,7 @@ p + p {
 
 .services__item {
   padding: 0.9rem 0 0.9rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 4%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-ocre) 18%, var(--color-bg-cream));
 }
 
 .services__item-title {
@@ -334,7 +361,7 @@ p + p {
 }
 
 .home-cta {
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 4%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-ocre) 18%, var(--color-bg-cream));
   padding: 3rem 0 0;
   display: flex;
   align-items: center;
@@ -351,6 +378,16 @@ p + p {
   letter-spacing: 0.01em;
   text-transform: none;
   margin-bottom: 0.35rem;
+  position: relative;
+}
+
+.home-cta__content h2::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-top: 0.35rem;
+  background: color-mix(in srgb, var(--color-ocre) 55%, var(--color-bg-cream));
 }
 
 .home-cta__content p {
@@ -361,6 +398,7 @@ p + p {
 
 .home-cta__actions .btn--primary {
   min-width: 10rem;
+  border-color: color-mix(in srgb, var(--color-ink) 80%, var(--color-ocre) 20%);
 }
 
 @media (max-width: 900px) {
