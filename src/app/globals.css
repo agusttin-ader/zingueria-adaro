@@ -39,6 +39,33 @@ body {
   line-height: 1.7;
 }
 
+.reveal-section {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .reveal-section {
+    transform: translateY(12px);
+    transition-duration: 0.35s;
+  }
+}
+
 h1 {
   font-size: clamp(2.1rem, 3.4vw, 2.7rem);
   font-weight: 700;
@@ -160,7 +187,7 @@ p + p {
 
 .site-footer__inner {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
 }
@@ -192,6 +219,32 @@ p + p {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+.site-footer__social {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.site-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: color 0.24s ease-out;
+}
+
+.site-footer__social-link:hover {
+  color: var(--color-ocre);
+}
+
+.site-footer__social-icon {
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 @media (max-width: 768px) {
@@ -424,6 +477,56 @@ p + p {
   border-color: color-mix(in srgb, var(--color-ink) 80%, var(--color-ocre) 20%);
 }
 
+.home-extra {
+  padding-top: 3rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.home-extra__header {
+  max-width: 40rem;
+}
+
+.home-extra__header h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.home-extra__header p {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+}
+
+.home-extra__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem 2.5rem;
+}
+
+.home-extra__item-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.home-extra__item p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-ink-subtle);
+}
+
+@media (max-width: 900px) {
+  .home-extra__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .services__grid {
     grid-template-columns: minmax(0, 1fr);
@@ -490,6 +593,108 @@ p + p {
 .empresa__values li {
   line-height: 1.6;
   color: var(--color-ink-subtle);
+}
+
+.empresa-extra {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.empresa-extra__header {
+  max-width: 40rem;
+}
+
+.empresa-extra__header h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.empresa-extra__header p {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+}
+
+.empresa-extra__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem 2.5rem;
+}
+
+.empresa-extra__item-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.empresa-extra__item p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-ink-subtle);
+}
+
+@media (max-width: 900px) {
+  .empresa-extra__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.empresa-categories {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.empresa-categories__header {
+  max-width: 40rem;
+}
+
+.empresa-categories__header h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.empresa-categories__header p {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+}
+
+.empresa-categories__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 2.5rem;
+}
+
+.empresa-categories__item-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.empresa-categories__item p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-ink-subtle);
+}
+
+@media (max-width: 900px) {
+  .empresa-categories__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 900px) {

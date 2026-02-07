@@ -1,4 +1,5 @@
 import Button from '@/components/Button';
+import RevealOnScroll from '@/components/RevealOnScroll';
 
 const SERVICES = [
   {
@@ -25,30 +26,32 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section className="services" aria-labelledby="services-heading">
-      <header className="services__header">
-        <h2 id="services-heading" className="services__title">
-          Servicios principales
-        </h2>
-        <p className="services__lead">
-          Zinguería para obras que necesitan piezas a medida, bien calculadas y bien instaladas.
-        </p>
-      </header>
+    <RevealOnScroll>
+      <section className="services" aria-labelledby="services-heading">
+        <header className="services__header">
+          <h2 id="services-heading" className="services__title">
+            Servicios principales
+          </h2>
+          <p className="services__lead">
+            Zinguería para obras que necesitan piezas a medida, bien calculadas y bien instaladas.
+          </p>
+        </header>
 
-      <div className="services__grid">
-        {SERVICES.map((service) => (
-          <article key={service.title} className="services__item">
-            <h3 className="services__item-title">{service.title}</h3>
-            <p className="services__item-text">{service.description}</p>
-          </article>
-        ))}
-      </div>
+        <div className="services__grid">
+          {SERVICES.map((service) => (
+            <article key={service.title} className="services__item">
+              <h3 className="services__item-title">{service.title}</h3>
+              <p className="services__item-text">{service.description}</p>
+            </article>
+          ))}
+        </div>
 
-      <div className="services__cta">
-        <Button href="#contacto" variant="secondary">
-          Ver más servicios
-        </Button>
-      </div>
-    </section>
+        <div className="services__cta">
+          <Button href="#contacto" variant="secondary">
+            Ver más servicios
+          </Button>
+        </div>
+      </section>
+    </RevealOnScroll>
   );
 }
