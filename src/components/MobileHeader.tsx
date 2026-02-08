@@ -12,19 +12,20 @@ const NAV_ITEMS = [
 export default function MobileHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Cerrar menú al hacer click fuera
+  // Close menu when clicking outside
   useEffect(() => {
     if (!menuOpen) return;
     const handleClick = (e: MouseEvent) => {
       const menu = document.getElementById('mobile-menu-panel');
-      if (menu && !menu.contains(e.target as Node)) {
+      const btn = document.getElementById('mobile-hamburger-button');
+      const target = e.target as Node;
+      if (menu && !menu.contains(target) && btn && !btn.contains(target)) {
         setMenuOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
   }, [menuOpen]);
-
   return (
     <header className="mobile-header">
       <div className="mobile-header__inner">
@@ -32,15 +33,25 @@ export default function MobileHeader() {
           <Image
             src="/images/logo-black.png"
             alt="Zinguería Adaro"
-            width={48}
-            height={48}
-            className="mobile-header__logo"
+            width={44}
+            height={44}
+            className="mobile-header__logo mobile-header__logo--light"
+            priority
+            style={{ objectFit: 'contain', borderRadius: '0.2rem' }}
+          />
+          <Image
+            src="/images/logo-white.png"
+            alt="Zinguería Adaro"
+            width={44}
+            height={44}
+            className="mobile-header__logo mobile-header__logo--dark"
             priority
             style={{ objectFit: 'contain', borderRadius: '0.2rem' }}
           />
           <span className="mobile-header__text" aria-hidden="true">A D A R O</span>
         </Link>
         <button
+          id="mobile-hamburger-button"
           className={`mobile-header__hamburger${menuOpen ? ' mobile-header__hamburger--open' : ''}`}
           aria-label={menuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
           aria-expanded={menuOpen}
@@ -51,7 +62,7 @@ export default function MobileHeader() {
           <span className={`mobile-header__hamburger-bar${menuOpen ? ' mobile-header__hamburger-bar--bottom' : ''}`} />
         </button>
       </div>
-      {/* Panel de menú hamburguesa */}
+      {/* Panel de menú hamburguesa, debajo del header, nunca cubre la marca */}
       <div
         id="mobile-menu-panel"
         className={`mobile-header__menu-panel${menuOpen ? ' mobile-header__menu-panel--open' : ''}`}
