@@ -12,19 +12,46 @@ const NAV_ITEMS = [
 export default function MobileHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  
+
   // Close menu when clicking outside
   useEffect(() => {
     if (!menuOpen) return;
+    // Attach click-outside handler while menu is open
     const handleClick = (e: MouseEvent) => {
-      const menu = document.getElementById('mobile-menu-panel');
-      const btn = document.getElementById('mobile-hamburger-button');
-      const target = e.target as Node;
-      if (menu && !menu.contains(target) && btn && !btn.contains(target)) {
-        setMenuOpen(false);
+      try {
+        const menu = document.getElementById('mobile-menu-panel');
+        const btn = document.getElementById('mobile-hamburger-button');
+        const target = e.target as Node;
+        // diagnostic log
+        // eslint-disable-next-line no-console
+        console.log('[MobileHeader] document.mousedown target=', (e.target as Element).tagName, 'insideMenu=', menu?.contains(target), 'insideBtn=', btn?.contains(target));
+        if (menu && !menu.contains(target) && btn && !btn.contains(target)) {
+          setMenuOpen(false);
+        }
+      } catch (err) {
+        // ignore
       }
     };
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    // Attach document handler on next tick to avoid catching the same click that opened the menu
+    // This prevents the open click from immediately closing the menu.
+    const timer = window.setTimeout(() => {
+      document.addEventListener('mousedown', handleClick);
+    }, 0);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, [menuOpen]);
+
+  // Diagnostic: log menuOpen changes for debugging hydration/state issues
+  useEffect(() => {
+    try {
+      // eslint-disable-next-line no-console
+      console.log('[MobileHeader] menuOpen ->', menuOpen);
+    } catch (e) {
+      // ignore
+    }
   }, [menuOpen]);
   return (
     <header className="mobile-header">
