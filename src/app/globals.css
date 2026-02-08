@@ -212,18 +212,11 @@
 }
 
 /* --- Hide desktop navbar on mobile --- */
-=======
->>>>>>> hamburguer menu mas animaciones
 @media (max-width: 768px) {
-  .nav {
-    display: none !important;
-  }
-<<<<<<< HEAD
-=======
+  .nav,
   .site-header {
     display: none !important;
   }
->>>>>>> hamburguer menu mas animaciones
 }
 :root {
   --color-bg-cream: #fdf7f0; /* blanco crema cálido, base de fondo */
