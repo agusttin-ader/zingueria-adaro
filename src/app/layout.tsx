@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import MobileHeader from '@/components/MobileHeader';
 import ScrollRestoration from '@/components/ScrollRestoration';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import UnregisterSW from '@/components/UnregisterSW';
 import { FaWhatsapp } from 'react-icons/fa';
 
 export const metadata: Metadata = {
@@ -43,6 +44,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
+          <UnregisterSW />
           <ScrollRestoration />
           <MobileHeader />
           <Navbar />
