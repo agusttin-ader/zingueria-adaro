@@ -251,25 +251,32 @@
 
 :root[data-theme='dark'] {
   /* Modo oscuro forzado por el usuario */
-  --color-bg-cream: #020617; /* fondo oscuro azulado */
-  --color-ink: #f9fafb; /* texto principal claro */
-  --color-ink-soft: #e5e7eb; /* texto secundario claro */
-  --color-ink-muted: #9ca3af; /* gris suave en oscuro */
-  --color-ink-subtle: #d1d5db; /* gris intermedio en oscuro */
-  --color-surface: color-mix(in srgb, var(--color-bg-cream) 75%, #0b1120 25%);
+  --color-bg-cream: #1A1A1A; /* industrial dark gray background */
+  /* Text tones: soft whites and readable grays (dark mode only) */
+  --color-ink: #E8E9EA; /* primary text — soft white, reduced glare */
+  --color-ink-soft: #CFCFD2; /* secondary text — slightly darker, not washed out */
+  --color-ink-subtle: #AEB6BC; /* paragraph / supportive text */
+  --color-ink-muted: #8F98A0; /* muted details (icons, meta) */
+  /* Surfaces: slightly lighter than the main background for subtle hierarchy */
+  --color-surface: #202020; /* primary surface */
+  --color-surface-2: #242424; /* secondary surface for cards/sections */
+  --color-surface-3: #2A2A2A; /* elevated blocks */
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]),
   :root[data-theme='system'] {
     /* Modo oscuro automático según el sistema cuando no hay preferencia guardada */
-    --color-bg-cream: #020617;
-    --color-ink: #f9fafb;
-    --color-ink-soft: #e5e7eb;
-    --color-ink-muted: #9ca3af;
-    --color-ink-subtle: #d1d5db;
+    --color-bg-cream: #1A1A1A;
+    --color-ink: #E8E9EA;
+    --color-ink-soft: #CFCFD2;
+    --color-ink-subtle: #AEB6BC;
+    --color-ink-muted: #8F98A0;
 
-    --color-surface: color-mix(in srgb, #020617 75%, #0b1120 25%);
+    /* Surfaces: slightly lighter than the main background for subtle hierarchy */
+    --color-surface: #202020;
+    --color-surface-2: #242424;
+    --color-surface-3: #2A2A2A;
   }
 }
 
@@ -554,6 +561,30 @@ p + p {
   opacity: 0.4;
 }
 
+/* Desktop: indicate selected theme by coloring the chosen icon (sun/moon) */
+@media (min-width: 769px) {
+  /* Dark selected: moon = light gray, sun subdued */
+  .theme-switch[aria-checked='true'] .theme-switch__icon--moon {
+    color: #F4F5F6; /* más clara que --color-ink */
+    opacity: 1;
+  }
+
+  .theme-switch[aria-checked='true'] .theme-switch__icon--sun {
+    color: var(--color-ink-muted);
+    opacity: 0.6;
+  }
+
+  /* Light selected: sun = darker gray, moon subdued */
+  .theme-switch[aria-checked='false'] .theme-switch__icon--sun {
+    color: var(--color-ink-subtle);
+    opacity: 1;
+  }
+
+  .theme-switch[aria-checked='false'] .theme-switch__icon--moon {
+    color: var(--color-ink-muted);
+    opacity: 0.4;
+  }
+}
 .theme-switch:focus-visible .theme-switch__track {
   outline: 2px solid color-mix(in srgb, var(--color-ink) 70%, var(--color-bg-cream));
   outline-offset: 2px;
@@ -760,6 +791,20 @@ p + p {
   opacity: 0.9;
 }
 
+/* Light-mode-only button override: use dark-theme background color for primary buttons */
+:root[data-theme='light'] .btn--primary {
+  background-color: #1A1A1A;
+  color: var(--color-bg-cream);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .btn--primary,
+  :root[data-theme='system'] .btn--primary {
+    background-color: #1A1A1A;
+    color: var(--color-bg-cream);
+  }
+}
+
 .btn--secondary {
   border-color: color-mix(in srgb, var(--color-ink) 40%, transparent);
 }
@@ -781,6 +826,110 @@ p + p {
 
 .btn:active {
   color: color-mix(in srgb, var(--color-ocre) 65%, var(--color-bg-cream));
+}
+
+/* Ensure primary contact/consult buttons use ocre on hover in both themes
+   and apply soft shadows: dark shadow in light mode, light shadow in dark mode */
+.btn--primary:hover,
+.btn--primary:active {
+  color: var(--color-ocre);
+}
+
+/* Light mode: darker shadow for primary buttons */
+:root[data-theme='light'] .btn--primary {
+  /* external dark shadow under button for light mode */
+  box-shadow: 0 6px 12px rgba(2, 8, 23, 0.10);
+  transition: box-shadow 0.22s ease-out, transform 0.18s;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .btn--primary,
+  :root[data-theme='system'] .btn--primary {
+    box-shadow: 0 6px 12px rgba(2, 8, 23, 0.10);
+    transition: box-shadow 0.22s ease-out, transform 0.18s;
+  }
+}
+
+/* Dark mode: subtle light shadow for primary buttons to lift them off the dark background */
+:root[data-theme='dark'] .btn--primary {
+  /* external light shadow under button for dark mode */
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.04);
+  transition: box-shadow 0.22s ease-out, transform 0.18s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .btn--primary,
+  :root[data-theme='system'] .btn--primary {
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.04);
+    transition: box-shadow 0.22s ease-out, transform 0.18s;
+  }
+}
+
+/* Expand shadow on hover for primary buttons (outside the button, like underneath) */
+.btn--primary:hover {
+  transform: scale(1.02);
+}
+
+/* Light mode: larger darker shadow on hover */
+:root[data-theme='light'] .btn--primary:hover {
+  box-shadow: 0 14px 34px rgba(2, 8, 23, 0.14);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .btn--primary:hover,
+  :root[data-theme='system'] .btn--primary:hover {
+    box-shadow: 0 14px 34px rgba(2, 8, 23, 0.14);
+  }
+}
+
+/* Dark mode: larger lighter shadow on hover */
+:root[data-theme='dark'] .btn--primary:hover {
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .btn--primary:hover,
+  :root[data-theme='system'] .btn--primary:hover {
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* Dark-mode-only button overrides: preserve shape/layout, improve contrast */
+:root[data-theme='dark'] .btn {
+  /* Button text matches page background (invisible until hover) */
+  color: var(--color-bg-cream);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .btn,
+  :root[data-theme='system'] .btn {
+    /* Button text matches page background (invisible until hover) */
+    color: var(--color-bg-cream);
+  }
+
+  :root:not([data-theme]) .btn--primary,
+  :root[data-theme='system'] .btn--primary {
+    background-color: var(--color-surface-2);
+    color: var(--color-ink);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  }
+
+  :root:not([data-theme]) .btn--primary:hover,
+  :root[data-theme='system'] .btn--primary:hover {
+    color: var(--color-ocre);
+    opacity: 0.98;
+  }
+
+  :root:not([data-theme]) .btn--secondary,
+  :root[data-theme='system'] .btn--secondary {
+    color: var(--color-ink-soft);
+    border-color: color-mix(in srgb, var(--color-ink) 20%, transparent);
+  }
+
+  :root:not([data-theme]) .btn--secondary:hover,
+  :root[data-theme='system'] .btn--secondary:hover {
+    color: var(--color-ocre);
+  }
 }
 
 .home-block {
