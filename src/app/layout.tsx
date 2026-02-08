@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
+import MobileHeader from '@/components/MobileHeader';
 import ScrollRestoration from '@/components/ScrollRestoration';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { FaWhatsapp } from 'react-icons/fa';
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <ScrollRestoration />
+          <MobileHeader />
           <Navbar />
           <main className="site-main">{children}</main>
           <footer className="site-footer">
