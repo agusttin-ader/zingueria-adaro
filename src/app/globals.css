@@ -300,6 +300,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Smooth but subtle theme transition: limit to cheap, compositable properties
+   (avoid box-shadow or other expensive repaints). Use will-change to hint
+   the browser. Respects prefers-reduced-motion. */
+.theme-transition,
+.theme-transition * {
+  transition: color 260ms ease-out, background-color 260ms ease-out, border-color 260ms ease-out, fill 260ms ease-out, stroke 260ms ease-out;
+  will-change: color, background-color;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-transition,
+  .theme-transition * {
+    transition: none !important;
+    will-change: auto;
+  }
+}
+
 body {
   font-size: 1rem;
   line-height: 1.7;

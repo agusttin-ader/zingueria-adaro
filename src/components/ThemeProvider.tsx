@@ -53,7 +53,23 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       window.localStorage.setItem('theme-preference', nextTheme);
     }
 
-    document.documentElement.setAttribute('data-theme', nextTheme);
+    // Add a short transition class then set the data-theme on the
+    // next animation frame. Using rAF avoids forcing layout and
+    // lets the browser perform a smooth composited transition.
+    const docEl = document.documentElement;
+    docEl.classList.add('theme-transition');
+
+    // Defer attribute change to the next frames so the transition
+    // is recognized without layout thrashing.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        docEl.setAttribute('data-theme', nextTheme);
+        // Remove the helper class after the expected transition duration.
+        window.setTimeout(() => {
+          docEl.classList.remove('theme-transition');
+        }, 320);
+      });
+    });
   };
 
   return (
