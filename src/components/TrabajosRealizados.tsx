@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const IMAGES = [
@@ -36,7 +37,14 @@ export default function TrabajosRealizados() {
           <div className="carousel__track" style={{ transform: `translateX(-${index * 100}%)` }}>
             {IMAGES.map((src, i) => (
               <div className="carousel__slide" key={src} aria-hidden={i !== index}>
-                <img src={src} alt={`Trabajo ${i + 1}`} />
+                <Image
+                  src={src}
+                  alt={`Trabajo ${i + 1}`}
+                  width={1600}
+                  height={520}
+                  sizes="(max-width: 900px) 100vw, 33vw"
+                  className="carousel__img"
+                />
               </div>
             ))}
           </div>

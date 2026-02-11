@@ -9,6 +9,8 @@ export default function Hero() {
           <video
             className="hero__video"
             src="/images/videos/hero-video.mp4"
+            poster="/images/techo-1.jpg"
+            preload="metadata"
             autoPlay
             muted
             loop

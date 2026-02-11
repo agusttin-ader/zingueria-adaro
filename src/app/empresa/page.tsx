@@ -1,7 +1,7 @@
 import RevealOnScroll from '@/components/RevealOnScroll';
 
 export const metadata = {
-  title: 'Empresa | Zinguería Adaro',
+  title: 'Sobre Nosotros | Zinguería Adaro',
   description:
     'Conocé la historia, el oficio y la forma de trabajo de Zinguería Adaro, especialistas en soluciones de chapa y zinguería para obra.',
 };
@@ -12,7 +12,7 @@ export default function EmpresaPage() {
       <RevealOnScroll>
         <>
           <header className="empresa__header">
-            <h1 className="empresa__title">Empresa</h1>
+            <h1 className="empresa__title">Sobre Nosotros</h1>
             <p className="empresa__lead">
               Más de 60 años de trayectoria combinando trabajo artesanal con tecnología para resolver
               trabajos de zinguería en viviendas y comercios.

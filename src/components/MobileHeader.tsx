@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
-  { href: '/empresa', label: 'Empresa' },
+  { href: '/empresa', label: 'Sobre Nosotros' },
   { href: '/contacto', label: 'Contacto' },
 ];
 
@@ -128,7 +128,10 @@ export default function MobileHeader() {
               priority
               style={{ objectFit: 'contain', borderRadius: '0.2rem' }}
             />
-            <span className="mobile-header__text" aria-hidden="true">A D A R O</span>
+            <span className="mobile-header__text" aria-hidden="true">
+              <span className="brand-first">J U A N</span>
+              <span className="brand-last">A D A R O</span>
+            </span>
           </Link>
           <button
             id="mobile-hamburger-button"

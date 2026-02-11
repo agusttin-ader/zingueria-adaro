@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
-  { href: '/empresa', label: 'Empresa' },
+  { href: '/empresa', label: 'Sobre Nosotros' },
   { href: '/contacto', label: 'Contacto' },
 ];
 
@@ -34,7 +34,6 @@ export default function Navbar() {
                   width={160}
                   height={40}
                   priority
-                  unoptimized
                   className="nav__logo nav__logo--light"
                 />
                 <Image
@@ -43,7 +42,6 @@ export default function Navbar() {
                   width={160}
                   height={40}
                   priority
-                  unoptimized
                   className="nav__logo nav__logo--dark"
                 />
               </>
@@ -54,12 +52,12 @@ export default function Navbar() {
                 width={160}
                 height={40}
                 priority
-                unoptimized
                 className="nav__logo nav__logo--light"
               />
             )}
             <span className="nav__logo-text" aria-hidden="true">
-              ADARO
+              <span className="brand-first">J U A N</span>
+              <span className="brand-last">A D A R O</span>
             </span>
           </Link>
         </div>

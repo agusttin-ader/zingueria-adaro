@@ -90,7 +90,7 @@
     display: block;
     width: 100%;
     background: var(--color-bg-cream);
-    border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+    border-bottom: 1px solid var(--color-ocre);
     min-height: 56px;
     position: sticky;
     top: 0;
@@ -372,6 +372,30 @@ p + p {
   gap: 1.5rem;
 }
 
+/* Ensure brand text and navbar links align vertically centered within the nav container */
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  height: 100%;
+}
+
+.nav__brand a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav__logo-text {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center; /* keep links vertically centered */
+}
+
 .nav__brand a {
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -433,6 +457,33 @@ p + p {
   text-transform: uppercase;
   font-size: 0.95rem;
   color: var(--color-ink);
+}
+
+/* Brand name parts: allow slightly larger gap between first name and surname */
+.brand-first,
+.brand-last {
+  display: inline-block;
+  letter-spacing: 0.12em; /* tighten letters within each name (J U A N / A D A R O) */
+  font-weight: 700;
+}
+
+.brand-last {
+  margin-left: 1.2rem; /* slightly larger gap so first name and surname read clearly */
+}
+
+/* Mobile: reduce letter-spacing inside each name for small screens (<=425px) */
+@media (max-width: 425px) {
+  .mobile-header__text .brand-first,
+  .mobile-header__text .brand-last,
+  .nav__logo-text .brand-first,
+  .nav__logo-text .brand-last {
+    letter-spacing: 0.06em; /* tighter on small screens */
+  }
+  /* keep the inter-name gap but slightly smaller on very small screens */
+  .mobile-header__text .brand-last,
+  .nav__logo-text .brand-last {
+    margin-left: 0.8rem;
+  }
 }
 
 .nav__links {
@@ -611,7 +662,7 @@ p + p {
   flex-direction: column;
   gap: 0.25rem;
   padding-top: 0.25rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 6%, transparent);
+  border-top: 1px solid var(--color-ocre-cream);
 }
 
 .site-footer__name {
@@ -689,7 +740,7 @@ p + p {
   min-height: 82vh;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  border-bottom: none;
 }
 
 .hero__content {
@@ -697,8 +748,46 @@ p + p {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
-  padding-left: 1.25rem;
-  border-left: 2px solid color-mix(in srgb, var(--color-ocre) 22%, var(--color-bg-cream));
+  padding-left: 4rem; /* moved further to the right */
+}
+
+@media (max-width: 900px) {
+  .hero__content {
+    padding-left: 2rem; /* reducir en tablet */
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__content {
+    padding-left: 1.25rem; /* móvil */
+  }
+}
+
+/* small vertical ocre accent next to hero content (short bar) */
+.hero__content::before {
+  content: '';
+  position: absolute;
+  /* place the bar just inside the content to sit next to text */
+  left: 3.4rem; /* padding-left (4rem) minus small offset */
+  top: 0.35rem; /* restored previous values */
+  bottom: 0.45rem; /* restored previous values */
+  width: 2px; /* thinner accent */
+  background: var(--color-ocre);
+  border-radius: 2px;
+}
+
+@media (max-width: 900px) {
+  .hero__content::before {
+    left: 1.4rem; /* padding-left (2rem) minus offset */
+    top: 0.6rem;
+    bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__content::before {
+    display: none; /* mobile already has underline; hide vertical accent */
+  }
 }
 
 .hero__title {
@@ -901,6 +990,14 @@ p + p {
   object-fit: cover;
   border-radius: 6px;
   display: block;
+}
+
+/* Next/Image inside carousel: ensure it fills slide */
+.carousel__img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
 .carousel__controls {
@@ -1192,7 +1289,7 @@ p + p {
 
 .home-extra {
   padding-top: 3rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  border-top: 1px solid var(--color-ocre-cream);
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -1249,7 +1346,7 @@ p + p {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  border-top: 1px solid var(--color-ocre-cream);
 }
 
 .work-gallery__header {
@@ -1274,7 +1371,7 @@ p + p {
 }
 
 .work-gallery__title {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   margin-bottom: 0.5rem;
@@ -1285,14 +1382,15 @@ p + p {
 .work-gallery__title::after {
   content: '';
   display: block;
-  width: 2.5rem;
+  width: 3rem; /* slightly wider for desktop visibility */
   height: 2px;
-  margin-top: 0.3rem;
-  background: color-mix(in srgb, var(--color-ocre) 60%, var(--color-bg-cream));
+  margin-top: 0.35rem;
+  background: var(--color-ocre); /* use solid ocre for better contrast */
+  border-radius: 2px;
 }
 
 .work-gallery__lead {
-  font-size: 0.98rem;
+  font-size: 1.02rem;
   line-height: 1.6;
   color: var(--color-ink-soft);
 }
@@ -1379,7 +1477,7 @@ p + p {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  border-top: 1px solid var(--color-ocre-cream);
 }
 
 .empresa__header {
@@ -1432,7 +1530,7 @@ p + p {
 .empresa-extra {
   margin-top: 3rem;
   padding-top: 2.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  border-top: 1px solid var(--color-ocre-cream);
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -1487,7 +1585,7 @@ p + p {
   display: flex;
   flex-direction: column;
   gap: 2.8rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  border-top: 1px solid var(--color-ocre-cream);
 }
 
 .contact__header {
@@ -1556,7 +1654,7 @@ p + p {
 .empresa-categories {
   margin-top: 3rem;
   padding-top: 2.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 5%, transparent);
+  border-top: 1px solid var(--color-ocre-cream);
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
