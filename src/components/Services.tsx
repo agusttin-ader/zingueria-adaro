@@ -47,7 +47,7 @@ export default function Services() {
         </div>
 
         <div className="services__cta">
-          <Button href="/contacto" variant="secondary">
+          <Button href="/contacto">
             Ver más servicios
           </Button>
         </div>

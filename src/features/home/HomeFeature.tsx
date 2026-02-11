@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import TrabajosRealizados from '@/components/TrabajosRealizados';
 import Button from '@/components/Button';
 import RevealOnScroll from '@/components/RevealOnScroll';
 
@@ -11,6 +12,7 @@ export default function HomeFeature() {
 
       <section className="home-block">
         <Services />
+        <TrabajosRealizados />
 
         <RevealOnScroll>
           <section className="home-cta" aria-labelledby="home-cta-heading">

@@ -705,16 +705,18 @@ p + p {
   font-size: clamp(2.2rem, 3.6vw, 2.9rem);
   line-height: 1.18;
   letter-spacing: 0.01em;
-  color: var(--color-ink);
+  color: #ffffff; /* texto blanco para contraste con el video */
   position: relative;
   padding-bottom: 0.4rem;
+  text-shadow: 0 6px 28px rgba(0,0,0,0.72); /* sombra más fuerte para legibilidad */
 }
 
 .hero__subtitle {
   max-width: 36rem;
   font-size: 0.98rem;
   line-height: 1.7;
-  color: var(--color-ink-subtle);
+  color: rgba(255,255,255,0.93); /* subtítulo ligeramente translúcido para contraste */
+  opacity: 0.97;
 }
 
 .hero__title::after {
@@ -822,6 +824,149 @@ p + p {
     transform: scale(1.02);
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
   }
+}
+
+/* Hero video background (full-bleed across viewport) */
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* make the section full-bleed even when inside a centered container */
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+.hero__video {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100vw; /* ensure video spans the full viewport width */
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.45) saturate(0.95);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Carousel styles */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  height: 520px; /* increased height as requested */
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.carousel__viewport {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 420ms ease;
+  height: 100%;
+}
+
+.carousel__slide {
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.carousel__indicators {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.carousel__indicators button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-ink) 12%, transparent);
+  border: 0;
+  padding: 0;
+}
+
+.carousel__indicators button.active {
+  background: var(--color-ocre);
+}
+
+/* Overlay nav buttons (medio escondidos) */
+.carousel__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: rgba(0,0,0,0.28);
+  color: #f2f2f2; /* flecha en gris más claro */
+  border: 0;
+  width: 56px; /* ligeramente más pequeño */
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem; /* flecha un poco más pequeña */
+  border-radius: 999px; /* completamente redondos */
+  cursor: pointer;
+  opacity: 0.95; /* más visibles */
+}
+
+.carousel__nav:hover {
+  background: rgba(0,0,0,0.46);
+  opacity: 1;
+}
+
+.carousel__nav:focus {
+  /* neutral subtle focus, remove ocre color */
+  outline: 2px solid rgba(255,255,255,0.12);
+  outline-offset: 2px;
+}
+
+.carousel__nav--prev {
+  left: 14px; /* visible inside the image */
+}
+
+.carousel__nav--next {
+  right: 14px; /* visible inside the image */
 }
 
 .btn:active {
@@ -1100,7 +1245,7 @@ p + p {
 .work-gallery {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 3.5rem 0 4rem;
+  padding: 3.5rem 1.25rem 4rem; /* same side padding as other sections */
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -1109,6 +1254,23 @@ p + p {
 
 .work-gallery__header {
   max-width: 40rem;
+  text-align: left; /* align title to the left like other section headers */
+}
+
+/* Ensure header sits to the left edge of the work-gallery container */
+.work-gallery {
+  align-items: flex-start;
+}
+
+.work-gallery__header h2,
+.work-gallery__lead {
+  text-align: left;
+}
+
+/* ensure header fills available width and sits flush to the left */
+.work-gallery__header {
+  width: 100%;
+  margin: 0;
 }
 
 .work-gallery__title {
@@ -1116,12 +1278,41 @@ p + p {
   font-weight: 700;
   letter-spacing: 0.03em;
   margin-bottom: 0.5rem;
+  text-transform: none;
+  position: relative; /* match services title */
+}
+
+.work-gallery__title::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-top: 0.3rem;
+  background: color-mix(in srgb, var(--color-ocre) 60%, var(--color-bg-cream));
 }
 
 .work-gallery__lead {
   font-size: 0.98rem;
   line-height: 1.6;
   color: var(--color-ink-soft);
+}
+
+/* Force left alignment for work-gallery header and contents to match other sections */
+.work-gallery {
+  align-items: flex-start !important;
+}
+
+.work-gallery__header {
+  width: 100% !important;
+  margin: 0 !important;
+  display: block !important;
+  text-align: left !important;
+}
+
+.work-gallery__header h2,
+.work-gallery__lead {
+  text-align: left !important;
+  margin-left: 0 !important;
 }
 
 .work-gallery__grid {
